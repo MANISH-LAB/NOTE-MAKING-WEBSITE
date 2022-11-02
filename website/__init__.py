@@ -1,4 +1,8 @@
 from flask import Flask ,Blueprint
+from flask_sqlalchemy import SQLAlchemy
+
+db=SQLAlchemy()
+DB_NAME=""
 
 def create_app():
   app=Flask(__name__)
