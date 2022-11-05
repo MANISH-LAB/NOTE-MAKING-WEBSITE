@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 {% block title%}Home{% endblock %}
 {% block content%}
-<style>
-    h1{
-    color:rgb(31, 125, 169);
-    text-align: center;
-    }
-    p{
-        text-align: center;
-    }
-</style>
-<h1>welcome to the site</h1>
+<h1 style="text-align:center">Notes</h1>
+<ul class="list-group item-group-flush" id="notes"> 
+    {% for notes in user.notes %}
+    <li class="list-group-item">{{ notes.data }}
+        <button class="close" type="button" onclick="deleteNote({{ notes.id }})"><span aria-hidden="True">&times;</span></button>
+    </li>
+    {% endfor %}
+
+</ul>
+
 <br>
-<p>Make your notes here and take a look back at what you had made.</p>
+<p style="text-align: center;">Enter new note here.</p>
+<form method="POST">
+    <textarea id="note" name="note" class="form-control"></textarea>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Make note</button>
+    </div>
+</form>
+
+
 {% endblock %}
